@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Matcher</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="bg-blur"></div>
+
+<div class="main-container">
+
+    <div class="hero-section">
+
+        <h1>🚀 AI Resume Matcher</h1>
+
+        <p>
+            Semantic Search + Keyword Matching + ATS Score
+        </p>
+
+    </div>
+
+    <form method="POST">
+
+        <div class="input-grid">
+
+            <div class="input-card">
+
+                <h2>📄 Job Description</h2>
+
+                <textarea
+                    name="job_desc"
+                    placeholder="Paste Job Description Here..."
+                    required></textarea>
+
+            </div>
+
+            <div class="input-card">
+
+                <h2>👨‍💻 Resume</h2>
+
+                <textarea
+                    name="resume_text"
+                    placeholder="Paste Resume Here..."
+                    required></textarea>
+
+            </div>
+
+        </div>
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
+    </form>
+
+    {% if ats_score %}
+
+    <div class="result-grid">
+
+        <div class="score-card">
+
+            <h2>{{ semantic_score }}%</h2>
+
+            <p>Semantic Search</p>
+
+        </div>
+
+        <div class="score-card">
+
+            <h2>{{ keyword_score }}%</h2>
+
+            <p>Keyword Match</p>
+
+        </div>
+
+        <div class="score-card final-card">
+
+            <h2>{{ ats_score }}%</h2>
+
+            <p>ATS Score</p>
+
+        </div>
+
+    </div>
+
+    <div class="keywords-box">
+
+        <h2>🔥 Matched Keywords</h2>
+
+        <div class="keyword-list">
+
+            {% for word in matched_keywords %}
+
+                <span>{{ word }}</span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

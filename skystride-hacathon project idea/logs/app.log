@@ -1,0 +1,172 @@
+[2026-05-30 09:38:08,339] INFO — SkyStride AI is running...
+[2026-05-30 09:40:00,943] INFO — User 5509719139 set origin: tenali
+[2026-05-30 09:40:08,082] INFO — User 5509719139 set destination: wonderla
+[2026-05-30 09:40:13,705] INFO — User 5509719139 set dates: 1
+[2026-05-30 09:40:22,565] INFO — User 5509719139 set budget: 1000
+[2026-05-30 09:40:33,180] INFO — User 5509719139 set transport: public transport
+[2026-05-30 09:40:55,579] INFO — User 5509719139 set style: peacefull,best efficient
+[2026-05-30 09:40:57,073] INFO — Triggering n8n workflow for user 5509719139 with params: {'origin': 'tenali', 'destination': 'wonderla', 'dates': '1', 'budget': '1000', 'transport': 'public transport', 'style': 'peacefull,best efficient'}
+[2026-05-30 09:40:57,075] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'tenali', 'destination': 'wonderla', 'dates': '1', 'budget': '1000', 'transport': 'public transport', 'style': 'peacefull,best efficient'}
+[2026-05-30 09:40:59,294] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 09:40:59,986] ERROR — Blueprint generation failed for user 5509719139
+[2026-05-30 09:45:59,533] INFO — User 5509719139 set origin: tenali
+[2026-05-30 09:46:07,522] INFO — User 5509719139 set destination: hyderbad
+[2026-05-30 09:46:17,463] INFO — User 5509719139 set dates: 1
+[2026-05-30 09:46:29,421] INFO — User 5509719139 set budget: 800 rupees
+[2026-05-30 09:46:47,241] INFO — User 5509719139 set transport: public transport ,busses and trains
+[2026-05-30 09:47:11,226] INFO — User 5509719139 set style: foodiee , peacefull fast travel like efficient time
+[2026-05-30 09:47:12,673] INFO — Triggering n8n workflow for user 5509719139 with params: {'origin': 'tenali', 'destination': 'hyderbad', 'dates': '1', 'budget': '800 rupees', 'transport': 'public transport ,busses and trains', 'style': 'foodiee , peacefull fast travel like efficient time'}
+[2026-05-30 09:47:12,673] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'tenali', 'destination': 'hyderbad', 'dates': '1', 'budget': '800 rupees', 'transport': 'public transport ,busses and trains', 'style': 'foodiee , peacefull fast travel like efficient time'}
+[2026-05-30 09:47:14,412] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 09:47:14,889] ERROR — Blueprint generation failed for user 5509719139
+[2026-05-30 09:50:19,460] INFO — User 5509719139 set origin: Tenali,India
+[2026-05-30 09:50:27,882] INFO — User 5509719139 set destination: Hyderabad,India
+[2026-05-30 09:50:35,565] INFO — User 5509719139 set dates: 1 day
+[2026-05-30 09:50:52,877] INFO — User 5509719139 set budget: ₹800
+[2026-05-30 09:51:07,032] INFO — User 5509719139 set transport: train
+[2026-05-30 09:51:25,280] INFO — User 5509719139 set style: fast travel
+[2026-05-30 09:51:29,050] INFO — Triggering n8n workflow for user 5509719139 with params: {'origin': 'Tenali,India', 'destination': 'Hyderabad,India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 09:51:29,114] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Tenali,India', 'destination': 'Hyderabad,India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 09:51:40,532] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 09:51:42,049] ERROR — Blueprint generation failed for user 5509719139
+[2026-05-30 09:54:36,719] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 09:54:45,779] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 09:54:51,581] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 09:55:01,215] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 09:55:16,310] INFO — User 1296731912 set transport: train
+[2026-05-30 09:55:32,681] INFO — User 1296731912 set style: scenic route
+[2026-05-30 09:55:34,789] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 09:55:34,790] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 09:55:40,214] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 09:55:41,051] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 09:59:57,405] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:00:10,489] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:00:15,613] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:00:23,001] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:00:32,623] INFO — User 1296731912 set transport: train
+[2026-05-30 10:00:44,248] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:00:47,032] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:00:47,052] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:00:51,315] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:00:51,712] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 10:01:24,791] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:01:38,648] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:01:46,507] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:01:52,160] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:01:57,865] INFO — User 1296731912 set transport: train
+[2026-05-30 10:02:08,127] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:02:09,809] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:02:09,857] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:02:12,325] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:02:12,750] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 10:08:04,272] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:08:11,650] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:08:17,630] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:08:26,081] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:08:31,203] INFO — User 1296731912 set transport: train
+[2026-05-30 10:08:42,188] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:08:43,579] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:08:43,583] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:08:47,684] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:08:48,209] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 10:30:06,884] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:30:16,504] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:30:22,475] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:30:32,172] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:30:37,898] INFO — User 1296731912 set transport: train
+[2026-05-30 10:30:48,842] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:30:50,205] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:30:50,205] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:30:53,075] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:30:53,652] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 10:35:10,990] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:35:27,264] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:35:32,709] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:35:41,419] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:35:49,930] INFO — User 1296731912 set transport: train
+[2026-05-30 10:36:01,395] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:36:04,464] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:36:04,589] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:36:08,748] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:36:09,168] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 10:38:44,442] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:38:54,141] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:39:02,238] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:39:31,765] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:39:38,709] INFO — User 1296731912 set transport: train
+[2026-05-30 10:39:49,026] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:39:51,704] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:39:51,706] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:40:01,496] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:40:07,294] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 10:42:20,509] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 10:42:30,650] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 10:42:38,304] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 10:42:49,857] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 10:42:55,008] INFO — User 1296731912 set transport: train
+[2026-05-30 10:43:04,960] INFO — User 1296731912 set style: scenic route
+[2026-05-30 10:43:06,749] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:43:06,757] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'scenic route'}
+[2026-05-30 10:43:12,960] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 10:43:14,787] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 11:05:49,003] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 11:06:00,893] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 11:06:06,557] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 11:06:22,758] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 11:06:29,067] INFO — User 1296731912 set transport: train
+[2026-05-30 11:06:47,996] INFO — User 1296731912 set style: fast travel
+[2026-05-30 11:09:13,036] INFO — User 1296731912 set style: //satrt
+[2026-05-30 11:09:15,224] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': '//satrt'}
+[2026-05-30 11:09:15,224] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': '//satrt'}
+[2026-05-30 11:09:24,799] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 11:09:25,996] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 11:11:27,138] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 11:11:34,018] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 11:11:41,056] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 11:11:49,283] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 11:11:53,986] INFO — User 1296731912 set transport: train
+[2026-05-30 11:12:03,598] INFO — User 1296731912 set style: fast travel
+[2026-05-30 11:12:05,741] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:12:05,742] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:12:18,591] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 11:12:19,942] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 11:16:22,136] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 11:16:32,770] INFO — User 1296731912 set destination: Tenli, India
+[2026-05-30 11:16:39,333] INFO — User 1296731912 set dates: aknc
+[2026-05-30 11:16:40,362] INFO — User 1296731912 set budget: sccas
+[2026-05-30 11:16:41,564] INFO — User 1296731912 set transport: sdadsa
+[2026-05-30 11:16:42,513] INFO — User 1296731912 set style: asdada
+[2026-05-30 11:16:43,333] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenli, India', 'dates': 'aknc', 'budget': 'sccas', 'transport': 'sdadsa', 'style': 'asdada'}
+[2026-05-30 11:16:43,334] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenli, India', 'dates': 'aknc', 'budget': 'sccas', 'transport': 'sdadsa', 'style': 'asdada'}
+[2026-05-30 11:16:46,560] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 11:16:47,002] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 11:17:31,947] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 11:17:40,563] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 11:17:45,763] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 11:17:55,805] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 11:18:01,435] INFO — User 1296731912 set transport: train
+[2026-05-30 11:18:10,905] INFO — User 1296731912 set style: fast travel
+[2026-05-30 11:18:12,625] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:18:12,627] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:18:19,821] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 11:18:21,326] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 11:20:01,993] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 11:20:10,573] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 11:20:16,717] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 11:20:21,928] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 11:20:26,047] INFO — User 1296731912 set transport: train
+[2026-05-30 11:20:40,972] INFO — User 1296731912 set style: fast travel
+[2026-05-30 11:20:43,043] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:20:43,046] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:21:01,837] ERROR — Failed to parse n8n response: Expecting value: line 1 column 1 (char 0)
+[2026-05-30 11:21:03,167] ERROR — Blueprint generation failed for user 1296731912
+[2026-05-30 11:23:24,349] INFO — User 1296731912 set origin: Hyderabad, India
+[2026-05-30 11:23:33,958] INFO — User 1296731912 set destination: Tenali, India
+[2026-05-30 11:23:39,071] INFO — User 1296731912 set dates: 1 day
+[2026-05-30 11:23:47,972] INFO — User 1296731912 set budget: ₹800
+[2026-05-30 11:23:53,491] INFO — User 1296731912 set transport: train
+[2026-05-30 11:24:02,844] INFO — User 1296731912 set style: fast travel
+[2026-05-30 11:24:05,263] INFO — Triggering n8n workflow for user 1296731912 with params: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:24:05,264] INFO — POSTing to n8n webhook: http://localhost:5678/webhook/skystride-blueprint | Payload: {'origin': 'Hyderabad, India', 'destination': 'Tenali, India', 'dates': '1 day', 'budget': '₹800', 'transport': 'train', 'style': 'fast travel'}
+[2026-05-30 11:24:17,405] INFO — Blueprint received from n8n (1442 characters).
+[2026-05-30 11:24:18,684] INFO — Blueprint delivered to user 1296731912 in 1 chunk(s)

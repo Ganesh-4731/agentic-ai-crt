@@ -1,0 +1,263 @@
+{
+  "name": "SkyStride AI Blueprint Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "skystride-blueprint",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.openweathermap.org/data/2.5/forecast",
+        "authentication": "none",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "q", "value": "={{ $('Webhook').item.json.body.origin }}" },
+            { "name": "appid", "value": "OPENWEATHERMAP_API_KEY_HERE" },
+            { "name": "units", "value": "metric" },
+            { "name": "cnt", "value": "8" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2",
+      "name": "Get Origin Weather",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [460, 100]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.openweathermap.org/data/2.5/forecast",
+        "authentication": "none",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "q", "value": "={{ $('Webhook').item.json.body.destination }}" },
+            { "name": "appid", "value": "OPENWEATHERMAP_API_KEY_HERE" },
+            { "name": "units", "value": "metric" },
+            { "name": "cnt", "value": "8" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3",
+      "name": "Get Destination Weather",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [460, 500]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.openrouteservice.org/geocode/search",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "ORS_API_KEY_HERE" }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "text", "value": "={{ $('Webhook').item.json.body.origin }}" },
+            { "name": "size", "value": "1" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4",
+      "name": "Geocode Origin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [700, 100]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.openrouteservice.org/geocode/search",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "ORS_API_KEY_HERE" }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "text", "value": "={{ $('Webhook').item.json.body.destination }}" },
+            { "name": "size", "value": "1" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5",
+      "name": "Geocode Destination",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [700, 500]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "6",
+      "name": "Merge Geocodes",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [940, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openrouteservice.org/v2/directions/driving-car/geojson",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "ORS_API_KEY_HERE" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ coordinates: [[items[0].json.features[0].geometry.coordinates[0], items[0].json.features[0].geometry.coordinates[1]], [items[1].json.features[0].geometry.coordinates[0], items[1].json.features[0].geometry.coordinates[1]]] }) }}",
+        "options": {}
+      },
+      "id": "7",
+      "name": "Get Route",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1160, 300]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "8",
+      "name": "Merge All",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [1380, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const webhookData = $('Webhook').item.json.body;\n\nconst originWeatherItem = $('Get Origin Weather').item.json;\nconst destWeatherItem = $('Get Destination Weather').item.json;\nconst routeItem = $('Get Route').item.json;\n\nfunction summariseWeather(forecastJson, locationName) {\n  try {\n    const list = forecastJson.list || [];\n    if (!list.length) return locationName + ': Weather data unavailable';\n    const temps = list.map(e => e.main && e.main.temp).filter(t => t !== undefined);\n    const tempMin = Math.round(Math.min(...temps));\n    const tempMax = Math.round(Math.max(...temps));\n    const rainProb = Math.round((list.reduce((sum, e) => sum + (e.pop || 0), 0) / list.length) * 100);\n    const condition = (list[0].weather && list[0].weather[0] && list[0].weather[0].description) || 'unknown';\n    return locationName + ': ' + tempMin + '°C – ' + tempMax + '°C, Rain probability: ' + rainProb + '%, Condition: ' + condition;\n  } catch (err) {\n    return locationName + ': Weather data parse error - ' + err.message;\n  }\n}\n\nfunction extractStops(routeJson) {\n  const stops = [];\n  try {\n    const features = routeJson.features || [];\n    if (!features.length) return stops;\n    const geometry = features[0].geometry;\n    if (!geometry || geometry.type !== 'LineString') return stops;\n    const coords = geometry.coordinates;\n    if (!coords || coords.length < 4) return stops;\n    const totalPoints = coords.length;\n    let totalDistanceM = 0;\n    try { totalDistanceM = features[0].properties.summary.distance || 0; } catch (_) {}\n    [0.25, 0.50, 0.75].forEach(function(frac, idx) {\n      const ptIdx = Math.floor(frac * (totalPoints - 1));\n      const lon = coords[ptIdx][0];\n      const lat = coords[ptIdx][1];\n      const approxDistKm = totalDistanceM > 0 ? Math.round((frac * totalDistanceM) / 1000) : Math.round(frac * 100);\n      stops.push({ stopNum: idx + 1, lat: lat.toFixed(4), lon: lon.toFixed(4), distanceKm: approxDistKm });\n    });\n  } catch (err) {}\n  return stops;\n}\n\nconst originWeatherSummary = summariseWeather(originWeatherItem, webhookData.origin);\nconst destWeatherSummary = summariseWeather(destWeatherItem, webhookData.destination);\nconst stops = extractStops(routeItem);\n\nlet stopsText = '';\nif (stops.length) {\n  stopsText = stops.map(s => 'Stop ' + s.stopNum + ': ~' + s.lat + ',' + s.lon + ' (approx ' + s.distanceKm + 'km from start)').join('\\n');\n} else {\n  stopsText = 'Route stop data unavailable.';\n}\n\nconst userMessage = 'TRIP PARAMETERS:\\nOrigin: ' + webhookData.origin + '\\nDestination: ' + webhookData.destination + '\\nDates: ' + webhookData.dates + '\\nBudget: ' + webhookData.budget + '\\nTransport: ' + webhookData.transport + '\\nStyle: ' + webhookData.style + '\\n\\nWEATHER DATA:\\n' + originWeatherSummary + '\\n' + destWeatherSummary + '\\n\\nROUTE STOPS (intermediate cities approx every 100km):\\n' + stopsText;\n\nreturn [{ json: { userMessage: userMessage } }];"
+      },
+      "id": "9",
+      "name": "Assemble Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1580, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer GROQ_API_KEY_HERE" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ model: 'llama-3.3-70b-versatile', messages: [{ role: 'system', content: 'You are SkyStride AI — a highly intelligent Travel & Weather Agent optimised for Telegram. Synthesise the trip parameters, weather data, and route data into a hyper-personalised travel blueprint.\\n\\nEXECUTION CONSTRAINTS:\\n1. MID-JOURNEY LOGIC: Break the route into segments. Mandate pitstops every 2-3 hours. For each stop: name the town, what to view/eat, and the weather at that stop.\\n2. FINANCIAL GUARDRAILS: Split total budget — Lodging 45%, Food & Activities 40%, Transit/Emergency 15%. Show computed amounts. Enforce these limits on all recommendations.\\n3. WEATHER ADAPTABILITY: If rain probability > 30%, pivot to indoor alternatives automatically.\\n4. NO FILLER: No pleasantries. Start with data immediately.\\n\\nOUTPUT FORMAT (Telegram Markdown):\\n\\n💰 1. FINANCIAL BREAKDOWN & GUARDRAILS\\n• Total Budget: [value]\\n• Lodging (45%): [computed]\\n• Food & Activities (40%): [computed / days]\\n• Transit & Emergency (15%): [computed]\\n\\n🛣️ 2. EN-ROUTE JOURNEY PLAN\\n• 🛫 Departure: [origin] - [weather]\\n• 📍 Pitstop 1 (~2hrs): [town] - [what to do] - Weather: [condition]\\n• 📍 Pitstop 2 (~4hrs/Lunch): [town] - [lunch + sight] - Weather: [condition]\\n• 🛬 Arrival: [destination] - [check-in note]\\n\\n🏨 3. BUDGET-MATCHED ACCOMMODATIONS\\n[3 options with estimated price per night, all within lodging allowance]\\n\\n📅 4. WEATHER-ADAPTIVE ITINERARY\\n[Each day: Morning / Lunch / Afternoon / Evening + Contingency note]\\n\\n🧳 5. PACKING LIST & PRO-TIPS\\n[Items based on actual temp/rain + 2-3 route-specific tips]' }, { role: 'user', content: $json.userMessage }], max_tokens: 2048, temperature: 0.6 }) }}",
+        "options": {}
+      },
+      "id": "10",
+      "name": "Call Groq API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1800, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const groqResponse = items[0].json;\nlet blueprint = '';\ntry {\n  blueprint = groqResponse.choices[0].message.content;\n} catch (err) {\n  blueprint = 'Error extracting blueprint: ' + JSON.stringify(groqResponse).substring(0, 500);\n}\nreturn [{ json: { blueprint: blueprint } }];"
+      },
+      "id": "11",
+      "name": "Extract Blueprint",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2020, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ blueprint: $json.blueprint }) }}",
+        "options": {}
+      },
+      "id": "12",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [2240, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[
+        { "node": "Get Origin Weather", "type": "main", "index": 0 },
+        { "node": "Get Destination Weather", "type": "main", "index": 0 }
+      ]]
+    },
+    "Get Origin Weather": {
+      "main": [[{ "node": "Geocode Origin", "type": "main", "index": 0 }]]
+    },
+    "Get Destination Weather": {
+      "main": [[{ "node": "Geocode Destination", "type": "main", "index": 0 }]]
+    },
+    "Geocode Origin": {
+      "main": [[{ "node": "Merge Geocodes", "type": "main", "index": 0 }]]
+    },
+    "Geocode Destination": {
+      "main": [[{ "node": "Merge Geocodes", "type": "main", "index": 1 }]]
+    },
+    "Merge Geocodes": {
+      "main": [[{ "node": "Get Route", "type": "main", "index": 0 }]]
+    },
+    "Get Route": {
+      "main": [[{ "node": "Merge All", "type": "main", "index": 0 }]]
+    },
+    "Get Origin Weather": {
+      "main": [[{ "node": "Merge All", "type": "main", "index": 1 }]]
+    },
+    "Assemble Prompt": {
+      "main": [[{ "node": "Call Groq API", "type": "main", "index": 0 }]]
+    },
+    "Call Groq API": {
+      "main": [[{ "node": "Extract Blueprint", "type": "main", "index": 0 }]]
+    },
+    "Extract Blueprint": {
+      "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+    },
+    "Merge All": {
+      "main": [[{ "node": "Assemble Prompt", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
